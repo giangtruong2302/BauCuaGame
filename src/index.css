@@ -1,0 +1,79 @@
+/* styles.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(-1%, -1%) rotate(-1deg);
+  }
+  50% {
+    transform: translate(1%, 1%) rotate(1deg);
+  }
+  75% {
+    transform: translate(-1%, 1%) rotate(-1deg);
+  }
+}
+
+.dice-container {
+  animation: shake 0.5s ease infinite;
+  animation-play-state: paused;
+}
+
+.dice-container[data-rolling="true"] {
+  animation-play-state: running;
+}
+
+.dice-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+/* Optional: Add some glow effects */
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+  }
+}
+
+.dice-container {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Improve button styles */
+.button-hover {
+  transition: all 0.3s ease;
+}
+
+.button-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
